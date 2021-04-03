@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
 @Table(name = "Products")
 public class Product implements Serializable {
 
-    private static final long serialVersionUID = -1000119078147252957L;
+    private static final long serialVersionUID = 5079671062243947755L;
 
     @Id
     @Column(name = "Code", length = 20, nullable = false)

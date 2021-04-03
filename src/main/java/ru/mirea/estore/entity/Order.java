@@ -14,7 +14,7 @@ import javax.persistence.UniqueConstraint;
         uniqueConstraints = { @UniqueConstraint(columnNames = "Order_Num") })
 public class Order implements Serializable {
 
-    private static final long serialVersionUID = -2576670215015463100L;
+    private static final long serialVersionUID = -1456359021265103292L;
 
     @Id
     @Column(name = "ID", length = 50)

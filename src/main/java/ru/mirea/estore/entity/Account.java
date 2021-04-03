@@ -11,10 +11,9 @@ import javax.persistence.Table;
 @Table(name = "Accounts")
 public class Account implements Serializable {
 
-    private static final long serialVersionUID = -2054386655979281969L;
-
     public static final String ROLE_MANAGER = "MANAGER";
     public static final String ROLE_EMPLOYEE = "EMPLOYEE";
+    private static final long serialVersionUID = 8615622805944974928L;
 
     @Id
     @Column(name = "User_Name", length = 20, nullable = false)
