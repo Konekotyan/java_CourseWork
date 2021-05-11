@@ -78,7 +78,6 @@ public class MainController {
     }
 
     // Product List
-
     @RequestMapping({ "/productList" })
     public String listProductHandler(Model model, //
                                      @RequestParam(value = "name", defaultValue = "") String likeName,
@@ -212,7 +211,7 @@ public class MainController {
         if (storeInfo.isEmpty()) {
 
             return "redirect:/estore";
-        } else if (!storeInfo.isValidCustomer()) {
+        } else if (storeInfo.isValidCustomer()) {
 
             return "redirect:/estoreCustomer";
         }
@@ -230,7 +229,7 @@ public class MainController {
         if (storeInfo.isEmpty()) {
 
             return "redirect:/estore";
-        } else if (!storeInfo.isValidCustomer()) {
+        } else if (storeInfo.isValidCustomer()) {
 
             return "redirect:/estoreCustomer";
         }

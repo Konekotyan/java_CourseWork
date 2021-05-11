@@ -76,9 +76,8 @@ public class EstoreApplication {
 	@Autowired
 	@Bean(name = "transactionManager")
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
-		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
 
-		return transactionManager;
+		return new HibernateTransactionManager(sessionFactory);
 	}
 
 

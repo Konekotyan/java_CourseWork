@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "Products")
+@Table(name = "products")
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 5079671062243947755L;

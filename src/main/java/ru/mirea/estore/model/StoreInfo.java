@@ -9,7 +9,7 @@ public class StoreInfo {
 
     private CustomerInfo customerInfo;
 
-    private final List<StoreLineInfo> cartLines = new ArrayList<StoreLineInfo>();
+    private final List<StoreLineInfo> storeLines = new ArrayList<StoreLineInfo>();
 
     public StoreInfo() {
 
@@ -31,12 +31,12 @@ public class StoreInfo {
         this.customerInfo = customerInfo;
     }
 
-    public List<StoreLineInfo> getCartLines() {
-        return this.cartLines;
+    public List<StoreLineInfo> getStoreLines() {
+        return this.storeLines;
     }
 
     private StoreLineInfo findLineByCode(String code) {
-        for (StoreLineInfo line : this.cartLines) {
+        for (StoreLineInfo line : this.storeLines) {
             if (line.getProductInfo().getCode().equals(code)) {
                 return line;
             }
@@ -51,11 +51,11 @@ public class StoreInfo {
             line = new StoreLineInfo();
             line.setQuantity(0);
             line.setProductInfo(productInfo);
-            this.cartLines.add(line);
+            this.storeLines.add(line);
         }
         int newQuantity = line.getQuantity() + quantity;
         if (newQuantity <= 0) {
-            this.cartLines.remove(line);
+            this.storeLines.remove(line);
         } else {
             line.setQuantity(newQuantity);
         }
@@ -70,7 +70,7 @@ public class StoreInfo {
 
         if (line != null) {
             if (quantity <= 0) {
-                this.cartLines.remove(line);
+                this.storeLines.remove(line);
             } else {
                 line.setQuantity(quantity);
             }
@@ -80,21 +80,21 @@ public class StoreInfo {
     public void removeProduct(ProductInfo productInfo) {
         StoreLineInfo line = this.findLineByCode(productInfo.getCode());
         if (line != null) {
-            this.cartLines.remove(line);
+            this.storeLines.remove(line);
         }
     }
 
     public boolean isEmpty() {
-        return this.cartLines.isEmpty();
+        return this.storeLines.isEmpty();
     }
 
     public boolean isValidCustomer() {
-        return this.customerInfo != null && this.customerInfo.isValid();
+        return this.customerInfo == null || !this.customerInfo.isValid();
     }
 
     public int getQuantityTotal() {
         int quantity = 0;
-        for (StoreLineInfo line : this.cartLines) {
+        for (StoreLineInfo line : this.storeLines) {
             quantity += line.getQuantity();
         }
         return quantity;
@@ -102,15 +102,15 @@ public class StoreInfo {
 
     public double getAmountTotal() {
         double total = 0;
-        for (StoreLineInfo line : this.cartLines) {
+        for (StoreLineInfo line : this.storeLines) {
             total += line.getAmount();
         }
         return total;
     }
 
-    public void updateQuantity(StoreInfo cartForm) {
-        if (cartForm != null) {
-            List<StoreLineInfo> lines = cartForm.getCartLines();
+    public void updateQuantity(StoreInfo storeForm) {
+        if (storeForm != null) {
+            List<StoreLineInfo> lines = storeForm.getStoreLines();
             for (StoreLineInfo line : lines) {
                 this.updateProduct(line.getProductInfo().getCode(), line.getQuantity());
             }

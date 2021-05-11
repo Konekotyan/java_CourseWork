@@ -15,6 +15,7 @@ public class Account implements Serializable {
     public static final String ROLE_EMPLOYEE = "EMPLOYEE";
     private static final long serialVersionUID = 8615622805944974928L;
 
+
     @Id
     @Column(name = "User_Name", length = 20, nullable = false)
     private String userName;
