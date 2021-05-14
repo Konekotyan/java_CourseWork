@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 import ru.mirea.estore.dao.ProductDAO;
 import ru.mirea.estore.dao.OrderDAO;
 import ru.mirea.estore.entity.Product;
@@ -32,7 +32,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @Transactional
-@EnableAutoConfiguration
 public class MainController {
 
     @Autowired
@@ -82,7 +81,7 @@ public class MainController {
     public String listProductHandler(Model model, //
                                      @RequestParam(value = "name", defaultValue = "") String likeName,
                                      @RequestParam(value = "page", defaultValue = "1") int page) {
-        final int maxResult = 5;
+        final int maxResult = 7;
         final int maxNavigationPage = 10;
 
         PaginationResult<ProductInfo> result = productDAO.queryProducts(page, //

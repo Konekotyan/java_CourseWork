@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>My cart</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+    </head>
+    <body>
+        <th:block th:include="/_header"></th:block>
+        <th:block th:include="/_menu"></th:block>
+
+        <div class="page-title">My cart</div>
+
+        <th:block th:if="${storeForm == null || storeForm.storeLines == null || storeForm.storeLines.empty}">
+            <h2>There is no items in cart</h2>
+            <a th:href="@{/productList}"><button>Show Product List</button></a>
+        </th:block>
+
+        <th:block th:if="${storeForm != null && storeForm.storeLines != null}">
+            <form method="POST" th:object="${storeForm}" th:action="@{/estore}">
+
+                <div class="product-preview-container"
+                     th:each="storeLineInfo, varStatus : ${storeForm.storeLines}">
+                    <ul>
+                        <li><img class="product-image"
+                                 th:src="@{|/productImage?code=${storeLineInfo.productInfo.code}|}" />
+                        </li>
+                        <li>Code: <span th:utext="${storeLineInfo.productInfo.code}"></span>
+                            <input type="hidden"
+                                   th:name="|storeLines[${varStatus.index}].productInfo.code|"
+                                   th:value="${storeLineInfo.productInfo.code}" />
+                        </li>
+                        <li>Name: <span th:utext="${storeLineInfo.productInfo.name}"></span></li>
+                        <li>Price:
+                            <span class="price"
+                                  th:utext="${#numbers.formatDecimal(storeLineInfo.productInfo.price,3,2,'COMMA')}">
+                                </span>
+                        </li>
+                        <li>Quantity:
+                            <input
+                                    th:name="|storeLines[${varStatus.index}].quantity|"
+                                    th:value="${storeLineInfo.quantity}" />
+                        </li>
+                        <li>Subtotal:
+                            <span class="subtotal"
+                                  th:utext="${#numbers.formatDecimal(storeLineInfo.amount,3,2,'COMMA')}">
+                                </span>
+                        </li>
+                        <li>
+                            <a th:href="@{|/estoreRemoveProduct?code=${storeLineInfo.productInfo.code}|}">
+                                Delete
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="clear: both"></div>
+                <input class="button-update-sc" type="submit" value="Update Quantity" />
+                <a class="navi-item"
+                   th:href="@{/estoreCustomer}"><button>Place an order</button></a>
+                <a class="navi-item"
+                   th:href="@{/productList}"><button>Continue Buy</button></a>
+            </form>
+        </th:block>
+    </body>
+</html>
