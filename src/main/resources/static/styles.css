@@ -188,13 +188,42 @@ ul {
 }
 
 .button-update-sc {
-    color: red;
     margin: 5px 5px 5px 20px;
 }
 
 .button-send-sc {
     color: red;
     margin: 5px 5px 5px 20px;
+}
+input.button21 {
+    font-weight: 300;
+    color: black;
+    text-decoration: none;
+    padding: .1em 1em calc(.1em + 1px);
+    border-radius: 1px;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    transition: 0.2s;
+}
+input.button21:hover { background: rgb(53, 167, 110); }
+input.button21:active {
+    background: rgb(33,147,90);
+    box-shadow: 0 3px rgb(33,147,90) inset;
+}
+a.button21 {
+    font-weight: 300;
+    color: black;
+    text-decoration: none;
+    padding: .1em 1em calc(.1em + 1px);
+    border-radius: 1px;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    transition: 0.2s;
+}
+a.button21:hover { background: rgb(53, 167, 110); }
+a.button21:active {
+    background: rgb(33,147,90);
+    box-shadow: 0 3px rgb(33,147,90) inset;
 }
 
 .error-message {
@@ -209,12 +238,12 @@ ul {
 }
 
 .subtotal {
-    color: red;
+    color: blue;
     font-weight: bold;
 }
 
 .total {
-    color: red;
+    color: blue;
     font-weight: bold;
     font-size: 120%;
 }

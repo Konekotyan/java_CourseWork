@@ -13,7 +13,7 @@
 
         <th:block th:if="${storeForm == null || storeForm.storeLines == null || storeForm.storeLines.empty}">
             <h2>There is no items in cart</h2>
-            <a th:href="@{/productList}"><button>Show Product List</button></a>
+            <a th:href="@{/productList}" class="button21"><button>Show Product List</button></a>
         </th:block>
 
         <th:block th:if="${storeForm != null && storeForm.storeLines != null}">
@@ -47,20 +47,25 @@
                                 </span>
                         </li>
                         <li>
-                            <a th:href="@{|/estoreRemoveProduct?code=${storeLineInfo.productInfo.code}|}">
+                            <a th:href="@{|/estoreRemoveProduct?code=${storeLineInfo.productInfo.code}|}" class="button21">
                                 Delete
                             </a>
                         </li>
                     </ul>
                 </div>
 
-                <div style="clear: both"></div>
-                <input class="button-update-sc" type="submit" value="Update Quantity" />
-                <a class="navi-item"
-                   th:href="@{/estoreCustomer}"><button>Place an order</button></a>
-                <a class="navi-item"
-                   th:href="@{/productList}"><button>Continue Buy</button></a>
+                <div style="clear: both" ></div>
+                <input class="button21 button-update-sc" type="submit" value="Update Quantity" />
+
+                <a class="navi-item button21"
+                   th:href="@{/estoreCustomer}">Place an order</a>
+                <a class="navi-item button21"
+                   th:href="@{/productList}">
+                    Continue Buy
+                </a>
             </form>
         </th:block>
+
+        <th:block th:include="/_footer"></th:block>
     </body>
 </html>
